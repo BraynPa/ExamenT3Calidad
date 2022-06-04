@@ -1,0 +1,34 @@
+﻿<div class="container">
+<h1>Bienvenido @ViewBag.Nombre</h1>
+<h2>Historias clínicas</h2>
+<br>
+<a class="btn btn-primary" href="home/create">Nueva Historia clínica</a>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Mascota</th>
+        <td>Especie</td>
+        <td>Raza</td>
+        <td>Dueño</td>
+        <td>Telefono</td>
+        <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in ViewBag.Historial)
+    {
+        <tr>
+            <td>@item.NombreMascota</td>
+            <td>@item.Especies.Name</td>
+            <td>@item.Razas.Name</td>
+            <td>@item.NombreDuenio</td>
+            <td>@item.Telefono</td>
+            <td>
+                <a href="/home/detalle?historialId=@item.CodigoRegistro" class="btn btn-link">Detalle</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>

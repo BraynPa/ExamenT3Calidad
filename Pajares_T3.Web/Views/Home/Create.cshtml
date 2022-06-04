@@ -1,0 +1,112 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1>Nueva historia clínica</h1>
+            <form action="/home/create" method="post">
+
+                <div class="mb-3">
+                    <label for="FechaDeRegistro">Fecha de Registro</label>
+                    <input type="datetime-local" class="form-control" Name="FechaDeRegistro" id="FechaDeRegistro" value="@Model.FechaDeRegistro">
+                    @Html.ValidationMessage("fechaRegistro")
+                </div>
+                <div class="mb-3">
+                    <label for="Nombre">Nombre De la Mascota</label>
+                    <input type="text" class="form-control" Name="NombreMascota" id="NombreMascota" value="@Model.NombreMascota">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="FechaNacimientoMascota ">Fecha de Nacimiento Mascota</label>
+                    <input type="datetime-local" class="form-control" Name="FechaNacimientoMascota" id="FechaNacimientoMascota" value="@Model.FechaNacimientoMascota">
+                    @Html.ValidationMessage("fechaNacimiento")
+                </div>
+                
+                <div class="mb-3">
+                    <label for="IdEspecie">Especie</label>
+                    
+                    <select class="form-select" name="IdEspecie" id="IdEspecie">
+                        <option value="">-- Seleccione un tipo de especie --</option>
+                        @foreach (var item in ViewBag.Especie)
+                        {
+                            if (item.Id == Model.IdEspecie)
+                            {
+                                <option value="@item.Id" selected>@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="IdRaza">Raza</label>
+                    
+                    <select class="form-select" name="IdRaza" id="IdRaza">
+                        <option value="">-- Seleccione un tipo de raza --</option>
+                        @foreach (var item in ViewBag.Raza)
+                        {
+                            if (item.Id == Model.IdRaza)
+                            {
+                                <option value="@item.Id" selected>@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="IdSexo">Sexo</label>
+                    
+                    <select class="form-select" name="IdSexo" id="IdSexo">
+                        <option value="">-- Seleccione el sexo --</option>
+                        @foreach (var item in ViewBag.Sexo)
+                        {
+                            if (item.Id == Model.IdSexo)
+                            {
+                                <option value="@item.Id" selected>@item.Tipo</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Tipo</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="Tamanio">Tamaño</label>
+                    <input type="text" class="form-control" Name="Tamanio" id="Tamanio" value="@Model.Tamanio">
+                </div>
+                <div class="mb-3">
+                    <label for="DatosParticulares">Datos Particulares</label>
+                    <textarea id="DatosParticulares" name="DatosParticulares" rows="4" cols="50" value="@Model.DatosParticulares"></textarea>
+
+                </div>
+                <div class="mb-3">
+                    <label for="NombreDuenio">Nombre del Dueño</label>
+                    <input type="text" class="form-control" Name="NombreDuenio" id="NombreDuenio" value="@Model.NombreDuenio">
+                </div>
+                <div class="mb-3">
+                    <label for="DireccionDuenio">Direccion del Dueño</label>
+                    <input type="text" class="form-control" Name="DireccionDuenio" id="Tamanio" value="@Model.DireccionDuenio">
+                </div>
+                <div class="mb-3">
+                    <label for="Telefono">Telefono</label>
+                    <input type="text" class="form-control" Name="Telefono" id="Telefono" value="@Model.Telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="CorreoDuenio">Correo del Dueño</label>
+                    <input type="text" class="form-control" Name="CorreoDuenio" id="CorreoDuenio" value="@Model.CorreoDuenio">
+                    @Html.ValidationMessage("Correo")
+                </div>
+                <br>
+                <button class="btn btn-primary">Guardar</button>
+                <a href="home/index" class="btn btn-link">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+</div>
